@@ -167,7 +167,7 @@ You are a world-class movie and web series recommendation engine. Your task is t
 """
         
         # Initialize the Gemini model (using gemini-2.0-flash-exp)
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-2.0-flash-exp')
         
         # Generate recommendations
         response = model.generate_content(prompt)

@@ -14,7 +14,7 @@ A beautiful and intelligent movie/web series recommendation website powered by F
   - Format (Dubbed/Subtitled/Original)
   - OTT Platform (Netflix, Prime Video, Disney+, etc.)
   - Year Range (1950-2025)
-- ⚡ **Fast & Reliable**: Built with Flask and powered by Gemini 2.5 Flash API
+- ⚡ **Fast & Reliable**: Built with Flask and powered by Gemini 2.0 Flash API
 
 
 ---
@@ -35,14 +35,14 @@ A beautiful and intelligent movie/web series recommendation website powered by F
 ## Technologies Used
 
 - **Backend**: Flask (Python)
-- **AI**: Google Gemini 5.0 Flash API & OMDB API
+- **AI**: Google Gemini 3.0 Flash API & OMDB API
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
 - **Styling**: Custom CSS with gradient backgrounds and animations
 - **Environment**: python-dotenv for configuration
 
 ## API Integration
 
-The application uses the Gemini 2.0 Flash API (`gemini-2.5-flash`) with a carefully crafted prompt that ensures:
+The application uses the Gemini 2.0 Flash API (`gemini-2.0-flash-exp`) with a carefully crafted prompt that ensures:
 - Strict adherence to user criteria
 - JSON-formatted responses
 - Exactly 5 recommendations
