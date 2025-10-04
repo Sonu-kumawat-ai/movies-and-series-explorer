@@ -35,24 +35,33 @@
                             <span class="icon">🎭</span>
                             Genre
                         </label>
-                        <select id="genre" name="genre" required>
-                            <option value="any">Any</option>
-                            <option value="action">Action</option>
-                            <option value="adventure">Adventure</option>
-                            <option value="animation">Animation</option>
-                            <option value="comedy">Comedy</option>
-                            <option value="crime">Crime</option>
-                            <option value="documentary">Documentary</option>
-                            <option value="drama">Drama</option>
-                            <option value="fantasy">Fantasy</option>
-                            <option value="horror">Horror</option>
-                            <option value="mystery">Mystery</option>
-                            <option value="romance">Romance</option>
-                            <option value="sci-fi">Sci-Fi</option>
-                            <option value="thriller">Thriller</option>
-                            <option value="war">War</option>
-                            <option value="western">Western</option>
-                        </select>
+                        <div class="custom-genre-select">
+                            <div class="genre-display-box" id="genreDisplayBox">
+                                <div class="selected-genres-inline" id="selectedGenresDisplay">
+                                    <span class="placeholder-text">Select genres...</span>
+                                </div>
+                                <span class="dropdown-arrow">▼</span>
+                            </div>
+                            <select id="genre" name="genre" class="hidden-select">
+                                <option value="">Select genres...</option>
+                                <option value="any">Any</option>
+                                <option value="action">Action</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="animation">Animation</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="crime">Crime</option>
+                                <option value="documentary">Documentary</option>
+                                <option value="drama">Drama</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="horror">Horror</option>
+                                <option value="mystery">Mystery</option>
+                                <option value="romance">Romance</option>
+                                <option value="sci-fi">Sci-Fi</option>
+                                <option value="thriller">Thriller</option>
+                                <option value="war">War</option>
+                                <option value="western">Western</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Language -->
@@ -63,8 +72,8 @@
                         </label>
                         <select id="language" name="language" required>
                             <option value="any">Any</option>
-                            <option value="english">English</option>
                             <option value="hindi">Hindi</option>
+                            <option value="english">English</option>
                             <option value="tamil">Tamil</option>
                             <option value="telugu">Telugu</option>
                             <option value="malayalam">Malayalam</option>
@@ -80,17 +89,28 @@
                         </select>
                     </div>
 
-                    <!-- Format -->
+                    <!-- Country -->
                     <div class="form-group">
-                        <label for="format">
-                            <span class="icon">💬</span>
-                            Format
+                        <label for="country">
+                            <span class="icon">🌍</span>
+                            Country
                         </label>
-                        <select id="format" name="format" required>
+                        <select id="country" name="country" required>
                             <option value="any">Any</option>
-                            <option value="dubbed">Dubbed</option>
-                            <option value="subtitled">Subtitled</option>
-                            <option value="original">Original Language</option>
+                            <option value="india">India</option>
+                            <option value="usa">USA</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="korea">Korea</option>
+                            <option value="japan">Japan</option>
+                            <option value="france">France</option>
+                            <option value="germany">Germany</option>
+                            <option value="spain">Spain</option>
+                            <option value="italy">Italy</option>
+                            <option value="canada">Canada</option>
+                            <option value="australia">Australia</option>
+                            <option value="china">China</option>
+                            <option value="mexico">Mexico</option>
+                            <option value="brazil">Brazil</option>
                         </select>
                     </div>
 

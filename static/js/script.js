@@ -1,3 +1,92 @@
+// Genre selection management
+let selectedGenres = [];
+
+const genreSelect = document.getElementById('genre');
+const selectedGenresDisplay = document.getElementById('selectedGenresDisplay');
+const genreDisplayBox = document.getElementById('genreDisplayBox');
+
+// Prevent dropdown from opening when clicking on tags
+genreDisplayBox.addEventListener('click', function(e) {
+    if (e.target.classList.contains('remove-btn') || e.target.closest('.genre-tag')) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
+
+// Handle genre selection
+genreSelect.addEventListener('change', function() {
+    const selectedValue = this.value;
+    const selectedText = this.options[this.selectedIndex].text;
+    
+    if (!selectedValue) return; // Empty selection
+    
+    // If "Any" is selected, clear all other selections
+    if (selectedValue === 'any') {
+        selectedGenres = ['any'];
+        renderGenreTags();
+        this.value = ''; // Reset dropdown
+        return;
+    }
+    
+    // Remove "Any" if other genre is selected
+    selectedGenres = selectedGenres.filter(g => g !== 'any');
+    
+    // Add genre if not already selected
+    if (!selectedGenres.includes(selectedValue)) {
+        selectedGenres.push(selectedValue);
+        renderGenreTags();
+    }
+    
+    // Reset dropdown to default
+    this.value = '';
+});
+
+// Render genre tags inside the display box
+function renderGenreTags() {
+    selectedGenresDisplay.innerHTML = '';
+    
+    if (selectedGenres.length === 0) {
+        // Show placeholder if no genres selected
+        selectedGenresDisplay.innerHTML = '<span class="placeholder-text">Select genres...</span>';
+    } else {
+        // Show selected genres as tags
+        selectedGenres.forEach(genre => {
+            const tag = document.createElement('div');
+            tag.className = 'genre-tag';
+            
+            // Get the display text for the genre
+            const option = Array.from(genreSelect.options).find(opt => opt.value === genre);
+            const displayText = option ? option.text : genre;
+            
+            tag.innerHTML = `
+                <span>${displayText}</span>
+                <span class="remove-btn" data-genre="${genre}">✕</span>
+            `;
+            
+            selectedGenresDisplay.appendChild(tag);
+        });
+        
+        // Add click handlers to all remove buttons after rendering
+        selectedGenresDisplay.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                removeGenre(this.getAttribute('data-genre'));
+            });
+        });
+    }
+}
+
+// Remove a genre
+function removeGenre(genre) {
+    selectedGenres = selectedGenres.filter(g => g !== genre);
+    renderGenreTags();
+}
+function removeGenre(genre) {
+    selectedGenres = selectedGenres.filter(g => g !== genre);
+    renderGenreTags();
+}
+
 // Form submission handler
 document.getElementById('recommendationForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -5,9 +94,9 @@ document.getElementById('recommendationForm').addEventListener('submit', async (
     // Get form values
     const formData = {
         contentType: document.getElementById('contentType').value,
-        genre: document.getElementById('genre').value,
+        genre: selectedGenres.length > 0 ? selectedGenres.join(', ') : 'any',
         language: document.getElementById('language').value,
-        format: document.getElementById('format').value,
+        country: document.getElementById('country').value,
         ottPlatform: document.getElementById('ottPlatform').value,
         fromYear: document.getElementById('fromYear').value
     };
@@ -83,6 +172,18 @@ function displayRecommendations(recommendations) {
             titleHtml = rec.title;
         }
         
+        // Create language and dubbed info
+        let languageInfoHtml = '';
+        if (rec.original_language) {
+            const dubbedBadge = rec.is_dubbed ? '<span class="dubbed-badge">🎙️ Dubbed</span>' : '';
+            languageInfoHtml = `
+                <div class="language-info">
+                    <span class="original-language">🌐 ${rec.original_language}</span>
+                    ${dubbedBadge}
+                </div>
+            `;
+        }
+        
         card.innerHTML = `
             ${posterHtml}
             <div class="card-content">
@@ -96,6 +197,7 @@ function displayRecommendations(recommendations) {
                     <span class="imdb-score">${rec.imdb}</span>
                     <span class="imdb-text">IMDb</span>
                 </div>
+                ${languageInfoHtml}
                 <p class="reason">${rec.summary}</p>
             </div>
         `;

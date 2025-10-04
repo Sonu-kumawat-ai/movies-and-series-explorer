@@ -142,9 +142,9 @@ You are a world-class movie and web series recommendation engine. Your task is t
 
 **User Criteria:**
 - **Content Type:** {content_type}
-- **Preferred Genre:** {user_selections.get('genre', 'any')}
+- **Preferred Genres:** {user_selections.get('genre', 'any')}
 - **Language:** {user_selections.get('language', 'any')}
-- **Format:** {user_selections.get('format', 'any')}
+- **Country:** {user_selections.get('country', 'any')}
 - **OTT Platform:** {user_selections.get('ottPlatform', 'Any Platform')}
 - **Release Year Range:** From {user_selections.get('fromYear', '1950')} to 2025
 
@@ -157,13 +157,21 @@ You are a world-class movie and web series recommendation engine. Your task is t
 3. IMPORTANT: Prioritize well-known, popular titles that are widely recognized and likely to be found in major movie databases (like IMDb/OMDB). Avoid obscure or very niche content.
 4. Only recommend content released between {user_selections.get('fromYear', '1950')} and 2025. If you're not certain about a 2025 release, recommend something from 2024 that you know exists.
 5. For web series/TV shows, recommend the SERIES NAME ONLY without mentioning specific seasons (e.g., "Breaking Bad" not "Breaking Bad Season 5"). Use the series' original release year.
-6. Adhere strictly to all other user criteria. If a filter is set to 'any', you have creative freedom for that category.
-7. Provide your response as a single, minified JSON array of objects.
-8. Do NOT include any explanatory text, greetings, or markdown formatting (like ```json) before or after the JSON array. Your entire output must be only the JSON data itself.
-9. Each object in the array must have the following four keys exactly: "title", "year", "imdb", and "summary".
-10. The "imdb" value should be the actual IMDb rating from the IMDb database. Use real ratings only.
-11. The "summary" value should be a concise plot summary (2-3 sentences, under 50 words) describing what the movie/series is about. Focus on the main premise and story.
-12. Ensure all recommendations are currently available or were available on the specified OTT platform.
+6. When multiple genres are specified, prioritize content that matches ANY of the genres or combines multiple genres.
+7. COUNTRY PRIORITY RULE: The Country field is MORE IMPORTANT than Language. ALWAYS recommend content that was originally produced in the specified Country, regardless of the language selection.
+8. DUBBED CONTENT RULE: If the selected Language does NOT match the country's native language, recommend content from the specified COUNTRY that is available dubbed/subtitled in the specified Language. For example:
+   - Hindi language + USA country = Recommend HOLLYWOOD/USA movies with Hindi dubbed versions (e.g., Avengers, Inception, Spider-Man in Hindi)
+   - English language + India country = Recommend INDIAN/BOLLYWOOD movies with English dubbed/subtitled versions (e.g., RRR, Baahubali, 3 Idiots in English)
+   - The content MUST be originally from the specified COUNTRY, just available in the specified LANGUAGE through dubbing/subtitles.
+9. Adhere strictly to all other user criteria. If a filter is set to 'any', you have creative freedom for that category.
+10. Provide your response as a single, minified JSON array of objects.
+11. Do NOT include any explanatory text, greetings, or markdown formatting (like ```json) before or after the JSON array. Your entire output must be only the JSON data itself.
+12. Each object in the array must have the following SIX keys exactly: "title", "year", "imdb", "summary", "original_language", and "is_dubbed".
+13. The "imdb" value should be the actual IMDb rating from the IMDb database. Use real ratings only.
+14. The "summary" value should be a concise plot summary (2-3 sentences, under 50 words) describing what the movie/series is about. Focus on the main premise and story.
+15. The "original_language" value should be the original language in which the content was produced (e.g., "English", "Hindi", "Korean", "Spanish", etc.).
+16. The "is_dubbed" value should be a boolean (true/false). Set to true if the content is being recommended in a dubbed format (i.e., when the selected language differs from the original language), false otherwise.
+17. Ensure all recommendations are currently available or were available on the specified OTT platform.
 """
         
         # Initialize the Gemini model (using gemini-2.0-flash-exp)
