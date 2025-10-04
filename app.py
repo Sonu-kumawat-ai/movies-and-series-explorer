@@ -241,5 +241,5 @@ You are a world-class movie and web series recommendation engine. Your task is t
                 'error_type': 'general_error'
             }), 500
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+#if __name__ == '__main__':
+#    app.run(debug=True, host='0.0.0.0', port=5000)
