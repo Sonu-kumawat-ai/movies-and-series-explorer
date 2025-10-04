@@ -1,0 +1,490 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    min-height: 100vh;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    color: white;
+}
+
+header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #fff 0%, #ffd700 50%, #ffaa00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+    opacity: 0.9;
+    color: #ffd700;
+    letter-spacing: 1px;
+}
+
+/* Main Content */
+.main-content {
+    background: rgba(20, 20, 20, 0.95);
+    border-radius: 25px;
+    padding: 50px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* Form Styles */
+.selection-form {
+    margin-bottom: 40px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.form-group .icon {
+    font-size: 1.5rem;
+}
+
+.form-group select,
+.form-group input {
+    padding: 16px 20px;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: rgba(30, 30, 30, 0.8);
+    color: #ffffff;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: #ffd700;
+    background: rgba(20, 20, 20, 0.95);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
+}
+
+.form-group select:hover,
+.form-group input:hover {
+    border-color: #ffd700;
+}
+
+.form-group select option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 22px 40px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+    color: #000000;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(135deg, #ffdd00 0%, #ffbb00 100%);
+}
+
+.submit-btn:active {
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Results Section */
+.results-section {
+    margin-top: 50px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.results-section h2 {
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.recommendations-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.recommendation-card {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.recommendation-card .movie-poster {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+    display: block;
+}
+
+.recommendation-card .movie-poster-placeholder {
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.recommendation-card .placeholder-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+}
+
+.recommendation-card .placeholder-title {
+    color: #ffd700;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0 20px;
+    max-width: 90%;
+    line-height: 1.4;
+}
+
+.recommendation-card .card-content {
+    padding: 25px;
+}
+
+.recommendation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.recommendation-card:hover::before {
+    left: 100%;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.8);
+    border-color: #ffd700;
+}
+
+.recommendation-card h3 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    letter-spacing: 0.5px;
+}
+
+.recommendation-card .movie-title-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.recommendation-card .movie-title-link:hover {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+.recommendation-card .movie-title-link::after {
+    content: '🔗';
+    font-size: 0.7em;
+    margin-left: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.recommendation-card .movie-title-link:hover::after {
+    opacity: 1;
+}
+
+.recommendation-card .year {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+    color: #000000;
+    padding: 6px 16px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.recommendation-card .rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0;
+    font-size: 1.2rem;
+    padding: 12px 18px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    width: fit-content;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.recommendation-card .imdb-icon {
+    font-size: 1.6rem;
+}
+
+.recommendation-card .imdb-score {
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #ffd700;
+    letter-spacing: 1px;
+}
+
+.recommendation-card .imdb-text {
+    font-size: 1rem;
+    color: #ffd700;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.recommendation-card .reason {
+    color: #d0d0d0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.7;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 215, 0, 0.05);
+    border-left: 3px solid #ffd700;
+    border-radius: 8px;
+}
+
+.recommendation-card .number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+    color: #000000;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Error Section */
+.error-section {
+    background: rgba(139, 0, 0, 0.2);
+    border: 2px solid rgba(220, 20, 60, 0.5);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease-in;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.error-section h3 {
+    color: #ff6b6b;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.error-section p {
+    color: #ffb3b3;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .main-content {
+        padding: 30px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .results-section h2 {
+        font-size: 2rem;
+    }
+    
+    .recommendations-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .recommendation-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .submit-btn {
+        font-size: 1.1rem;
+        padding: 18px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .main-content {
+        padding: 25px;
+        border-radius: 20px;
+    }
+    
+    .form-group label {
+        font-size: 0.95rem;
+    }
+    
+    .form-group select,
+    .form-group input {
+        padding: 14px 16px;
+        font-size: 1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}

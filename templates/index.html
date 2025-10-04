@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie & Series Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Movie & Series Explorer</h1>
+            <p class="subtitle">Discover your next favorite watch powered by AI</p>
+            <p class="subtitle">Designed and Developed by Sonu Kumawat</p>
+        </header>
+
+        <div class="main-content">
+            <form id="recommendationForm" class="selection-form">
+                <div class="form-grid">
+                    <!-- Content Type -->
+                    <div class="form-group">
+                        <label for="contentType">
+                            <span class="icon">📺</span>
+                            Content Type
+                        </label>
+                        <select id="contentType" name="contentType" required>
+                            <option value="any">Any</option>
+                            <option value="movies">Movies</option>
+                            <option value="web series">Web Series</option>
+                        </select>
+                    </div>
+
+                    <!-- Genre -->
+                    <div class="form-group">
+                        <label for="genre">
+                            <span class="icon">🎭</span>
+                            Genre
+                        </label>
+                        <select id="genre" name="genre" required>
+                            <option value="any">Any</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="animation">Animation</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="crime">Crime</option>
+                            <option value="documentary">Documentary</option>
+                            <option value="drama">Drama</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="horror">Horror</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="romance">Romance</option>
+                            <option value="sci-fi">Sci-Fi</option>
+                            <option value="thriller">Thriller</option>
+                            <option value="war">War</option>
+                            <option value="western">Western</option>
+                        </select>
+                    </div>
+
+                    <!-- Language -->
+                    <div class="form-group">
+                        <label for="language">
+                            <span class="icon">🗣️</span>
+                            Language
+                        </label>
+                        <select id="language" name="language" required>
+                            <option value="any">Any</option>
+                            <option value="english">English</option>
+                            <option value="hindi">Hindi</option>
+                            <option value="tamil">Tamil</option>
+                            <option value="telugu">Telugu</option>
+                            <option value="malayalam">Malayalam</option>
+                            <option value="kannada">Kannada</option>
+                            <option value="marathi">Marathi</option>
+                            <option value="bengali">Bengali</option>
+                            <option value="punjabi">Punjabi</option>
+                            <option value="korean">Korean</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                        </select>
+                    </div>
+
+                    <!-- Format -->
+                    <div class="form-group">
+                        <label for="format">
+                            <span class="icon">💬</span>
+                            Format
+                        </label>
+                        <select id="format" name="format" required>
+                            <option value="any">Any</option>
+                            <option value="dubbed">Dubbed</option>
+                            <option value="subtitled">Subtitled</option>
+                            <option value="original">Original Language</option>
+                        </select>
+                    </div>
+
+                    <!-- OTT Platform -->
+                    <div class="form-group">
+                        <label for="ottPlatform">
+                            <span class="icon">📱</span>
+                            OTT Platform
+                        </label>
+                        <select id="ottPlatform" name="ottPlatform" required>
+                            <option value="Any Platform">Any Platform</option>
+                            <option value="Netflix">Netflix</option>
+                            <option value="Amazon Prime Video">Amazon Prime Video</option>
+                            <option value="Disney+">Disney+</option>
+                            <option value="JioHotstar">JioHotstar</option>
+                            <option value="SonyLIV">SonyLIV</option>
+                        </select>
+                    </div>
+
+                    <!-- From Year -->
+                    <div class="form-group">
+                        <label for="fromYear">
+                            <span class="icon">📅</span>
+                            From Year To 2025
+                        </label>
+                        <input type="number" id="fromYear" name="fromYear" min="1950" max="2025" value="2000" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Get Recommendations</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="spinner"></span>
+                        Finding perfect matches...
+                    </span>
+                </button>
+            </form>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <h2>🎯 Your Personalized Recommendations</h2>
+                <div id="recommendationsList" class="recommendations-list"></div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="errorSection" class="error-section" style="display: none;">
+                <h3 id="errorTitle">⚠️ Oops!</h3>
+                <p id="errorMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
