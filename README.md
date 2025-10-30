@@ -9,9 +9,8 @@ A beautiful and intelligent movie/web series recommendation website powered by F
 - 🔍 **Advanced Filtering**: Multiple criteria including:
   - Content Type (Movies/Web Series)
   - Genre (Action, Comedy, Drama, etc.)
-  - Mood (Happy, Excited, Relaxed, etc.)
   - Language (English, Hindi, Korean, Spanish, etc.)
-  - Format (Dubbed/Subtitled/Original)
+  - Country
   - OTT Platform (Netflix, Prime Video, Disney+, etc.)
   - Year Range (1950-2025)
 - ⚡ **Fast & Reliable**: Built with Flask and powered by Gemini 2.0 Flash API
@@ -24,9 +23,8 @@ A beautiful and intelligent movie/web series recommendation website powered by F
 1. Fill in your preferences:
    - Select content type (Movies/Web Series/Any)
    - Choose your preferred genre
-   - Select your current mood
    - Pick language preference
-   - Choose format (Dubbed/Subtitled/Original)
+   - Choose Country 
    - Select OTT platform
    - Set year range
 2. Click "Get Recommendations"
@@ -45,7 +43,7 @@ A beautiful and intelligent movie/web series recommendation website powered by F
 The application uses the Gemini 2.0 Flash API (`gemini-2.0-flash-exp`) with a carefully crafted prompt that ensures:
 - Strict adherence to user criteria
 - JSON-formatted responses
-- Exactly 5 recommendations
+- Exactly 6 recommendations
 - Title, year, and compelling reason for each suggestion
 
 ---
