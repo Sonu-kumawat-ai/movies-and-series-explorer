@@ -184,6 +184,18 @@ function displayRecommendations(recommendations) {
             `;
         }
         
+        // Create genre info
+        let genreInfoHtml = '';
+        if (rec.main_genre) {
+            const subGenreDisplay = rec.sub_genre ? `<span class="sub-genre">📂 ${rec.sub_genre}</span>` : '';
+            genreInfoHtml = `
+                <div class="genre-info">
+                    <span class="main-genre">🎬 ${rec.main_genre}</span>
+                    ${subGenreDisplay}
+                </div>
+            `;
+        }
+        
         card.innerHTML = `
             ${posterHtml}
             <div class="card-content">
@@ -198,6 +210,7 @@ function displayRecommendations(recommendations) {
                     <span class="imdb-text">IMDb</span>
                 </div>
                 ${languageInfoHtml}
+                ${genreInfoHtml}
                 <p class="reason">${rec.summary}</p>
             </div>
         `;

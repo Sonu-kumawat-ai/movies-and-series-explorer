@@ -34,7 +34,7 @@ A beautiful and intelligent movie/web series recommendation website powered by F
 
 - **Backend**: Flask (Python)
 - **AI**: Google Gemini 3.0 Flash API & OMDB API
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Frontend**: HTML5, CSS3, JavaScript
 - **Styling**: Custom CSS with gradient backgrounds and animations
 - **Environment**: python-dotenv for configuration
 

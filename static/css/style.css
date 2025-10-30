@@ -503,6 +503,38 @@ header h1 {
     animation: pulse 2s ease-in-out infinite;
 }
 
+.recommendation-card .genre-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+
+.recommendation-card .main-genre {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 170, 0, 0.2) 100%);
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffd700;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.recommendation-card .sub-genre {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #cccccc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
